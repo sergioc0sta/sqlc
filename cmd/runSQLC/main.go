@@ -35,15 +35,29 @@ func main() {
 	// }
 	//
 
-	categories, err := queries.ListCategories(ctx)
+	// categories, err := queries.ListCategories(ctx)
+	//
+	// if err != nil {
+	// 	panic(err)
+	// }
+	//
+	// for _, category := range categories {
+	//
+	// 	fmt.Printf("o meu id 'e: %s com o nome: %s e a Description: %s", category.ID, category.Name, category.Description.String)
+	// }
+
+
+
+	UpdateCategorie:=  db.UpdateCategorieParams{
+		Name: "panadinhos",
+		Description: sql.NullString{String: "super super sandes", Valid: true},
+		ID: "5a0ac34f-553e-4e6a-bf6c-e95306a81844",
+	}
+	err = queries.UpdateCategorie(ctx, UpdateCategorie)
 
 	if err != nil {
 		panic(err)
 	}
-
-	for _, category := range categories {
-
-		fmt.Printf("o meu id 'e: %s com o nome: %s e a Description: %s", category.ID, category.Name, category.Description.String)
-	}
+	fmt.Println("update")
 
 }
